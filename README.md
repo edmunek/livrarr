@@ -1,3 +1,16 @@
+## ARM64 / Raspberry Pi Support
+
+The official image is amd64 only. To build for ARM64 (e.g. Raspberry Pi 4) I've done the following:
+
+1. Fork this repository
+2. Create `.github/workflows/build-arm64.yml` with the workflow from this fork
+3. Run the workflow via **Actions → Build ARM64 Docker Image → Run workflow**
+4. The image will be pushed to your GitHub Container Registry as `ghcr.io/YOUR_USERNAME/livrarr:arm64`
+
+> Note: Build time is few hours on GitHub Actions free tier (first run). 
+> Subsequent runs are faster due to layer caching.
+
+
 # Livrarr
 
 **Self-hosted ebook and audiobook library manager.** Built for the \*arr ecosystem — finds, grabs, and organizes your books the way Sonarr does for TV.
