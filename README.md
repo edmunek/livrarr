@@ -1,15 +1,31 @@
 ## ARM64 / Raspberry Pi Support
 
-The official image is amd64 only. To build for ARM64 (e.g. Raspberry Pi 4) I've done the following:
+The official image is amd64 only. For ARM64 (e.g. Raspberry Pi 4), a pre-built image is available:
+
+```yaml
+services:
+  livrarr:
+    image: ghcr.io/edmunek/livrarr:arm64
+    container_name: livrarr
+    ports:
+      - 8789:8789
+    volumes:
+      - /your/config:/config
+      - /your/books:/books
+      - /your/downloads:/downloads
+    restart: unless-stopped
+```
+
+### Build it yourself
+If you prefer to build your own ARM64 image:
 
 1. Fork this repository
 2. Create `.github/workflows/build-arm64.yml` with the workflow from this fork
 3. Run the workflow via **Actions → Build ARM64 Docker Image → Run workflow**
 4. The image will be pushed to your GitHub Container Registry as `ghcr.io/YOUR_USERNAME/livrarr:arm64`
 
-> Note: Build time is few hours on GitHub Actions free tier (first run). 
+> Note: Build time is approximately 6 hours on GitHub Actions free tier (first run).
 > Subsequent runs are faster due to layer caching.
-
 
 # Livrarr
 
